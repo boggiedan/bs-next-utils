@@ -1,6 +1,6 @@
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
-import { Nullable } from "@/utils/types";
+import { Nullable } from "../utils/types";
 
 type Alert = {
   type: "success" | "error" | "info";
