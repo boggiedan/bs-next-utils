@@ -1,5 +1,4 @@
 import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import tailwind from "rollup-plugin-tailwindcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -19,18 +18,19 @@ const config = {
       dir: packageJson.main,
       format: "cjs",
       sourcemap: "inline",
+      exports: "named",
     },
     {
       dir: packageJson.module,
       format: "esm",
       sourcemap: "inline",
+      exports: "named",
     },
   ],
   plugins: [
     peerDepsExternal(),
     resolve({ extensions }),
-    commonjs(),
-    typescript({ tsconfig: "./tsconfig.json" }),
+    typescript(),
     tailwind({
       input: "./src/tailwind-entry.css",
     }),
