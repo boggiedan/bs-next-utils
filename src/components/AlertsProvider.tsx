@@ -65,9 +65,7 @@ const AlertsProvider: FC<{
 }> = ({ children }) => {
   const [alert, setAlert] = useState<Nullable<Alert>>(null);
 
-  const handleToastClose = useCallback(() => {
-    setAlert(null);
-  }, []);
+  const handleToastClose = () => setAlert(null);
 
   return (
     <AlertsContext.Provider value={setAlert}>
