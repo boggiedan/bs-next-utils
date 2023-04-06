@@ -11,7 +11,7 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
+  "types": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w"
