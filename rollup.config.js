@@ -3,25 +3,19 @@ import typescript from "@rollup/plugin-typescript";
 import tailwind from "rollup-plugin-tailwindcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
-const packageJson = await import("./package.json", {
-  assert: {
-    type: "json",
-  },
-});
-
-const extensions = [".js", ".ts", ".jsx", ".tsx", ".svg"];
+const extensions = [".js", ".ts", ".jsx", ".tsx", ".svg", ".css"];
 
 const config = {
   input: "src/index.ts",
   output: [
     {
-      dir: packageJson.main,
+      file: "dist/cjs/index.js",
       format: "cjs",
       sourcemap: "inline",
       exports: "named",
     },
     {
-      dir: packageJson.module,
+      file: "dist/esm/index.js",
       format: "esm",
       sourcemap: "inline",
       exports: "named",
@@ -29,11 +23,12 @@ const config = {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({ extensions }),
-    typescript(),
     tailwind({
       input: "./src/tailwind-entry.css",
+      purge: false,
     }),
+    resolve({ extensions }),
+    typescript(),
   ],
 };
 

@@ -6,8 +6,8 @@
   "author": "Sukmanov Bogdan",
   "license": "MIT",
   "private": false,
-  "main": "dist/cjs",
-  "module": "dist/esm",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist"
   ],

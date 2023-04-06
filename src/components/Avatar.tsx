@@ -5,7 +5,7 @@ const Avatar: FC<{
   alt?: string;
   size?: `w-${number} h-${number}`;
 }> = ({ src, alt = "profile picture", size = "w-12 h-12" }) => (
-  <div className={size + "rounded-md bg-cover bg-center"}>
+  <div className={`${size} rounded-md bg-cover bg-center`}>
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img
       src={src}
