@@ -8,7 +8,7 @@ const extensions = [".js", ".ts", ".jsx", ".tsx", ".svg", ".css"];
 
 const config = [
   {
-    input: "src/index.ts",
+    input: "index.ts",
     output: [
       {
         file: "dist/cjs/index.js",
@@ -26,7 +26,7 @@ const config = [
     plugins: [
       peerDepsExternal(),
       tailwind({
-        input: "./src/tailwind-entry.css",
+        input: "./tailwind-entry.css",
         purge: false,
       }),
       resolve({ extensions }),
