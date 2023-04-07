@@ -1,11 +1,26 @@
 {
-  "name": "bs-next-utils",
+  "name": "@bs-personal/bs-next-utils",
   "version": "1.0.0",
   "type": "module",
   "description": "Components and utils for NextJS Projects",
   "author": "Sukmanov Bogdan",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boggiedan/bs-next-utils.git"
+  },
+  "keywords": [
+    "NextJS",
+    "React",
+    "utils",
+    "and",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/boggiedan/bs-next-utils/issues"
+  },
+  "homepage": "https://github.com/boggiedan/bs-next-utils#readme",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
