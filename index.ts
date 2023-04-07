@@ -1,3 +1,5 @@
+import "./index.css";
+
 // Hooks
 export { default as useNextAuthRedirect } from "./hooks/useNextAuthRedirect";
 export { default as usePageLoadingProgress } from "./hooks/usePageLoadingProgress";
