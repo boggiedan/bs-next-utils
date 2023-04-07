@@ -1,7 +1,6 @@
 {
   "name": "@bs-personal/bs-next-utils",
-  "version": "1.0.0",
-  "type": "module",
+  "version": "1.0.1",
   "description": "Components and utils for NextJS Projects",
   "author": "Sukmanov Bogdan",
   "license": "MIT",
