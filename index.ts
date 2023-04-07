@@ -8,6 +8,7 @@ export { default as usePageLoadingProgress } from "./hooks/usePageLoadingProgres
 export { default as AlertsProvider, AlertsContext } from "./components/AlertsProvider";
 export { default as Loader } from "./components/Loader";
 export { default as Avatar } from "./components/Avatar";
+export { default as DataTable } from "./components/DataTable";
 
 // Utils
 export * from "./utils/types";
