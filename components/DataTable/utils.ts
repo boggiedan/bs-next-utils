@@ -18,7 +18,7 @@ const hideFromSm: HidableSizesProps = {
   xsHidden: true,
 };
 
-const makeHideClass = (sizes: HidableSizesProps) => {
+const makeHideClasses = (sizes: HidableSizesProps) => {
   return Object.keys(sizes)
     .map((key) => {
       const size = key.slice(0, 2);
@@ -30,16 +30,16 @@ const makeHideClass = (sizes: HidableSizesProps) => {
 
 export const getHideableClasses = (sizes: HidableSizesProps) => {
   if (sizes.lgHidden) {
-    return makeHideClass(hideFromLg);
+    return makeHideClasses(hideFromLg);
   }
 
   if (sizes.mdHidden) {
-    return makeHideClass(hideFromMd);
+    return makeHideClasses(hideFromMd);
   }
 
   if (sizes.smHidden) {
-    return makeHideClass(hideFromSm);
+    return makeHideClasses(hideFromSm);
   }
 
-  return makeHideClass(sizes);
+  return makeHideClasses(sizes);
 };
