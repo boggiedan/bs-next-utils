@@ -14,9 +14,10 @@ const getFromTo = (index: number, itemsPerPage: number) => {
 
 const KeepData: FC<
   CommonProps & {
-    onNext: (currentIndex: number) => Promise<{ isLastPage: boolean }>;
+    lastPageReached: boolean;
+    onNext: (currentIndex: number) => Promise<void>;
   }
-> = ({ tabs, rows: _rows, itemsPerPage, onNext }) => {
+> = ({ tabs, rows: _rows, itemsPerPage, lastPageReached, onNext }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState<Nullable<number>>(!itemsPerPage ? 0 : null);
   const [rows, setRows] = useState(_rows);
@@ -29,6 +30,12 @@ const KeepData: FC<
       setRows((current) => [...current, ...updatedRows]);
     }
   }, [_rows, rows]);
+
+  useEffect(() => {
+    if (!lastIndex && lastPageReached) {
+      setLastIndex(currentIndex);
+    }
+  }, [lastPageReached, lastIndex, currentIndex]);
 
   const displayRows = useMemo(() => {
     if (!itemsPerPage) return rows;
@@ -60,13 +67,8 @@ const KeepData: FC<
     }
 
     setIsLoading(true);
-    const { isLastPage: lastPageFetched } = await onNext(currentIndex);
+    await onNext(currentIndex);
     setIsLoading(false);
-
-    if (lastPageFetched) {
-      setLastIndex(nextIndex);
-    }
-
     setCurrentIndex(nextIndex);
   };
 
@@ -83,7 +85,7 @@ const KeepData: FC<
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
-                    {tabs.map(({ content, ...hidedSizes }, index) => (
+                    {tabs.map(({ content, ...hidedSizes }) => (
                       <th
                         key={content}
                         scope="col"
