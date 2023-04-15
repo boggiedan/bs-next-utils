@@ -1,17 +1,17 @@
 import { WithId } from "@/utils/types";
 import { ReactNode } from "react";
 
-type Sizes = "xs" | "sm" | "md" | "lg";
+export type Sizes = "sm" | "md" | "lg" | "xl" | "2xl";
 
-export type HidableSizesProps = {
-  [key in `${Sizes}Hidden`]?: boolean;
+type HideFromSizeProp = {
+  hideFrom?: Sizes;
 };
 
-type Cells = Array<WithId<{ content: ReactNode | string } & HidableSizesProps>>;
+type Cells = Array<WithId<{ content: ReactNode | string } & HideFromSizeProp>>;
 type Rows = Array<WithId<{ cells: Cells }>>;
 
 export type CommonProps = {
-  tabs: Array<{ content: string } & HidableSizesProps>;
+  tabs: Array<{ content: string } & HideFromSizeProp>;
   rows: Rows;
   itemsPerPage: number;
 };

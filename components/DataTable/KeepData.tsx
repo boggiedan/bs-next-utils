@@ -3,7 +3,7 @@ import { CommonProps } from "@/components/DataTable/types";
 import { Nullable } from "@/utils/types";
 import Loader from "@/components/Loader";
 import cx from "classnames";
-import { getHideableClasses } from "@/components/DataTable/utils";
+import { hideClasses } from "@/components/DataTable/config";
 
 const getFromTo = (index: number, itemsPerPage: number) => {
   const from = index === 0 ? 0 : index * itemsPerPage;
@@ -85,13 +85,13 @@ const KeepData: FC<
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
-                    {tabs.map(({ content, ...hidedSizes }) => (
+                    {tabs.map(({ content, hideFrom }) => (
                       <th
                         key={content}
                         scope="col"
                         className={cx(
                           "border-b border-gray-200 bg-white px-5 py-3 text-left text-sm font-normal uppercase text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400",
-                          getHideableClasses(hidedSizes)
+                          hideFrom && hideClasses[hideFrom]
                         )}
                       >
                         {content}
@@ -103,12 +103,12 @@ const KeepData: FC<
                   {!isLoading &&
                     displayRows.map(({ id, cells }) => (
                       <tr key={id}>
-                        {cells.map(({ id, content, ...hidedSizes }) => (
+                        {cells.map(({ id, content, hideFrom }) => (
                           <td
                             key={id}
                             className={cx(
                               "border-b border-gray-200 bg-white px-5 py-5 text-sm dark:border-gray-700 dark:bg-gray-800",
-                              getHideableClasses(hidedSizes)
+                              hideFrom && hideClasses[hideFrom]
                             )}
                           >
                             {typeof content === "string" ? (
