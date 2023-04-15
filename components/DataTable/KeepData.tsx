@@ -14,10 +14,11 @@ const getFromTo = (index: number, itemsPerPage: number) => {
 
 const KeepData: FC<
   CommonProps & {
-    lastPageReached: boolean;
+    lastPageReached?: boolean;
+    externalLoading?: boolean;
     onNext: (currentIndex: number) => Promise<void>;
   }
-> = ({ tabs, rows: _rows, itemsPerPage, lastPageReached, onNext }) => {
+> = ({ tabs, rows: _rows, itemsPerPage, lastPageReached, externalLoading, onNext }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState<Nullable<number>>(!itemsPerPage ? 0 : null);
   const [rows, setRows] = useState(_rows);
@@ -36,6 +37,10 @@ const KeepData: FC<
       setLastIndex(currentIndex);
     }
   }, [lastPageReached, lastIndex, currentIndex]);
+
+  useEffect(() => {
+    setIsLoading(Boolean(externalLoading));
+  }, [externalLoading]);
 
   const displayRows = useMemo(() => {
     if (!itemsPerPage) return rows;
