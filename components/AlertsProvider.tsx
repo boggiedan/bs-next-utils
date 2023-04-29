@@ -1,6 +1,6 @@
-import { createContext, FC, ReactNode, useEffect, useState } from "react";
+import { createContext, FC, useEffect, useState } from "react";
 import cx from "classnames";
-import { Nullable } from "@/utils/types";
+import { FCWithChildren, Nullable } from "@/utils/types";
 
 type Alert = {
   type: "success" | "error" | "info";
@@ -60,9 +60,7 @@ const Toast: FC<{
   );
 };
 
-const AlertsProvider: FC<{
-  children: ReactNode;
-}> = ({ children }) => {
+const AlertsProvider: FCWithChildren = ({ children }) => {
   const [alert, setAlert] = useState<Nullable<Alert>>(null);
 
   const handleToastClose = () => setAlert(null);
